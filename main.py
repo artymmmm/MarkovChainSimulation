@@ -6,10 +6,10 @@ import numpy as np
 # функция одной симуляции
 # параметры: матрица переходных вероятностей,
 # количество шагов, изначальное состояниеразмер матрицы
-def launch(probabilityMatrix, steps, firstState, matrixSize):
-    state = firstState
+def launch(probability_matrix, steps, first_state, matrix_size):
+    state = first_state
     for i in range(steps):
-        prob = np.random.choice(matrixSize, p=probabilityMatrix[state])
+        prob = np.random.choice(matrix_size, p=probability_matrix[state])
         state = prob
     return state
 
@@ -51,6 +51,6 @@ finalPr = np.matmul(initialPr,
                     transitionPrToPower)  # умножение вектора на матрицу
 finalStatePr = finalPr[lastState]
 
-print('''Вероятность попадания в состояние {0} на шаге {1}:/n1){2}, 
-полученная с помощью вычислений/n2){3}, полученная с помощью 
+print('''\nВероятность попадания в состояние {0} на шаге {1}:\n1) {2}, 
+полученная с помощью вычислений\n2) {3}, полученная с помощью 
 моделирования'''.format(lastState, steps, finalStatePr, modelPr))
